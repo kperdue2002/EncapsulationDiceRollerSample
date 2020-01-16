@@ -30,7 +30,18 @@ namespace EncapsulationDiceRollerSample
         /// <summary>
         /// the current value of the die 1-6
         /// </summary>
-        public byte FaceValue { get; private set; }
+        public byte FaceValue
+        {
+            get { return FaceValue; }
+            private set
+            {
+                if(value < 1 || value > 6)
+                {
+                    throw new ArgumentException("invalid face value!");
+                }
+                FaceValue = value;
+            }
+        }
 
         /// <summary>
         /// die that are held are not rolled
